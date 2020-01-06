@@ -6,6 +6,30 @@ $base-color3: #A8E6CE;
 * {
     font-family: 'Roboto', sans-serif;
 }
+.container {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+@media only screen and (min-device-width: 720px) {
+    /* define mobile specific styles come here */
+    .container {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+.block-form {
+    padding: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: grid;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    grid-template-columns: 150px 1fr;
+    & label, input {
+        display: inline;
+    }
+}
 .title {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;

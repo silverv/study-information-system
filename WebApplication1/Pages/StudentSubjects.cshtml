@@ -27,21 +27,47 @@
     }
 
 </table>
-<h1>Enroll the student in subjects</h1>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Code</th>
-        <th>Ects</th>
-    </tr>
-    @foreach (var x in Model.AllSubjects)
-    {
-        <tr>
-            <td>@x.Name</td>
-            <td>@x.Code</td>
-            <td>@x.Ects</td>
-            <td><form asp-page="StudentSubjects" asp-page-handler="Add" asp-route-SubjectId="@x.SubjectId" asp-route-PersonalCode="@RouteData.Values["PersonalCode"]"><button type="submit">Enroll</button></form></td>
-        </tr>
-    }
-</table>
+<div class="container-left-right">
+    <div class="left">
+        <h1>Enroll the student in subjects</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Ects</th>
+            </tr>
+            @foreach (var x in Model.AllSubjects)
+            {
+                <tr>
+                    <td>@x.Name</td>
+                    <td>@x.Code</td>
+                    <td>@x.Ects</td>
+                    <td><form asp-page="StudentSubjects" asp-page-handler="Add" asp-route-SubjectId="@x.SubjectId" asp-route-PersonalCode="@RouteData.Values["PersonalCode"]"><button type="submit">Enroll</button></form></td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="right">
+        <p>Filter subjects by these criteria:</p>
+        <form asp-page="StudentSubjects" asp-page-handler="Query" class="block-form">
+
+            <label asp-for="QuerySubject.Name"></label>
+            <input type="text" asp-for="QuerySubject.Name" />
+
+            <label asp-for="QuerySubject.Code"></label>
+            <input type="text" asp-for="QuerySubject.Code" />
+
+            <label asp-for="QuerySubject.Description"></label>
+            <input type="text" asp-for="QuerySubject.Description" />
+
+
+            <label asp-for="QuerySubject.Ects"></label>
+            <input type="text" asp-for="QuerySubject.Ects" />
+
+            <button type="submit">Filter</button>
+        </form>
+        
+    </div>
+</div>
+
 

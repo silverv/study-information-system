@@ -15,6 +15,8 @@ namespace WebApplication1
         public List<Subject> Subjects { get; set; }
         public Subject ChosenSubject { get; set; }
 
+        public Subject QuerySubject { get; set; } // This is the subject that is here just for it's property keys, no values are needed from it
+
         public List<Subject> AllSubjects { get; set; }
 
         public void OnPost(string PersonalCode)
@@ -46,8 +48,8 @@ namespace WebApplication1
             this.PersonalCode = PersonalCode;
             using (OisContext ois = new OisContext())
             {
-                Subjects = getStudentSubjects(PersonalCode);
-                AllSubjects = getAllSubjects();
+                this.Subjects = getStudentSubjects(PersonalCode);
+                this.AllSubjects = getAllSubjects().Except(Subjects).ToList();
             }
         }
         private List<Subject> getAllSubjects()
@@ -55,7 +57,7 @@ namespace WebApplication1
             using (OisContext ois = new OisContext())
             {
                 return (from subject in ois.Subject
-                        select subject).Distinct().ToList().Except(Subjects).ToList();
+                        select subject).Distinct().ToList();
             }
         }
         public void OnPostAdd(int SubjectId, string PersonalCode)
@@ -98,7 +100,8 @@ namespace WebApplication1
                                              select sis).First());
                 ois.SaveChanges();
             }
-            setPersonalAndAllSubjects(PersonalCode);
+            this.Subjects = getStudentSubjects(PersonalCode);
+            this.AllSubjects = getAllSubjects().Except(this.Subjects).ToList(); // These are now filtered subjects
         }
     }
 }
