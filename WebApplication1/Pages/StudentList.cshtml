@@ -1,0 +1,29 @@
+﻿@page
+@model WebApplication1.StudentListModel
+@{
+    ViewData["Title"] = "StudentList";
+}
+
+    <table>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Student code</th>
+            <th>Personal code</th>
+        </tr>
+        @foreach (var x in Model.Students)
+        {
+    <tr>
+        <td>@x.Firstname</td>
+        <td>@x.Lastname</td>
+        <td>@x.Code</td>
+        <td>@x.Personalcode</td>
+        <td>
+            <form asp-page="StudentSubjects" asp-route-PersonalCode="@x.Personalcode">
+                <button type="submit">Subjects</button>
+            </form>
+        </td>
+    </tr>
+        }
+    </table>
+

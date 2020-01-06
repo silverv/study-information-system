@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplication1</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <div class="title">Study information system</div>
+        <nav class="navbar">
+            <a asp-page="StudentList">Student List</a>
+            <a asp-page="Subjects">Subject List</a>
+        </nav>
+    </header>
+
+    @RenderBody()
+
+    <footer class="footer">
+        <p>&copy; 2020 - Silver Valdvee - <a asp-area="" asp-page="/Privacy">Privacy</a></p>
+    </footer>
+</body>
+</html>

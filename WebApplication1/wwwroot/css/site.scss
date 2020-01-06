@@ -1,0 +1,40 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500&display=swap');
+$base-color: #C5F6FC;
+$base-color2: #A8C1E6;
+$base-color3: #A8E6CE;
+* {
+    font-family: 'Roboto', sans-serif;
+}
+.title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+
+}
+.navbar {
+    display: inline-flex;
+    border: 3px solid $base-color;
+    margin-top: 7px;
+    margin-bottom: 10px;
+}
+    .navbar a {
+        padding: 7px;
+        color: darken($base-color2, 30%);
+        text-decoration: none;
+    }
+    .navbar:nth-child(odd) {
+        background-color: $base-color2;
+    }
+    table {
+        border-collapse: collapse;
+    }
+
+table, th, td {
+    padding: 7px;
+    border: 1px solid $base-color;
+}
+th {
+    border: 2px solid #D1D1FF;
+    background-color: $base-color3;
+}
